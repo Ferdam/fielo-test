@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path drafting</title>
+</head>
+<style>
+    .grid-container {
+        display: flex;
+        max-width: 900px;
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+    .grid-3x3 {
+        display: grid;
+        padding: 4px;
+        grid-template-columns: auto auto auto;
+        gap: 4px;
+        background-color: #222227;
+        height: 150px;
+        width: 150px;
+    }
+    .grid-cell {
+        background-color: hsl(240, 7%, 20%);
+        position: relative;
+    }
+    .grid-selected::after {
+        position: absolute;
+        content: '';
+        inset: 0;
+        margin: 40%;
+        background-color: rgb(199, 0, 50);
+        border-radius: 500px;
+    }
+</style>
+<body>
+    <div class="grid-container">
+        <div class="grid-3x3">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+        </div>
+    </div>
+</body>
+<script>
+    let selectedCells = [
+        [1,1,1, 0,0,0, 0,0,0],
+        [1,1,0, 0,0,1, 0,0,0],
+        [1,0,1, 0,1,0, 0,0,0],
+        [1,0,0, 0,1,1, 0,0,0],
+        [1,0,0, 0,1,0, 0,0,1],
+        [0,1,1, 1,0,0, 0,0,0],
+        [0,1,0, 1,0,1, 0,0,0],
+        [0,0,1, 1,1,0, 0,0,0],
+        [0,0,0, 1,1,1, 0,0,0],
+        [0,0,0, 1,1,0, 0,0,1],
+        [0,0,0, 1,0,1, 0,1,0],
+        [0,0,0, 1,0,0, 0,1,1],
+        [0,0,0, 0,0,0, 1,1,1],
+        [0,0,0, 0,0,1, 1,1,0],
+        [0,0,0, 0,1,0, 1,0,1],
+        [0,0,0, 0,1,1, 1,0,0],
+        [0,0,1, 0,1,0, 1,0,0]
+    ];
+    let selectedClass = 'grid-selected';
+    let grid = document.querySelector('.grid-3x3');
+    for (let item of selectedCells) {
+        let newGrid = document.createElement('div');
+        newGrid.innerHTML = grid.innerHTML;
+        newGrid.classList.add(grid.classList[0]);
+        for (let i=0; i < item.length; i++) {
+            if (item[i] == 1) newGrid.children[i].classList.add(selectedClass);
+        }
+        document.body.children[0].appendChild(newGrid);
+    }
+    document.body.children[0].removeChild(grid);
+</script>
+</html>
