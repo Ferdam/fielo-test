@@ -16,7 +16,7 @@ Notes:
 ### Big-O Notation
 Running finalVersion through Big-O-Calculator (https://www.npmjs.com/package/big-o-calculator) gives an estimation of **O(n^m)**
 
-```json
+```javascript
 {
   bigO: 'O(n^m)',
   testResults: [
