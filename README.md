@@ -44,4 +44,5 @@ Notes:
 
 ### Draft of a 3x3 Grid
 A draft of a 3x3 grid with all path possibilities to help on visualization:
+
 <img src=".\3x3drafts.png" width="300" />
